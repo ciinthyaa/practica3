@@ -40,6 +40,28 @@ features <- read.csv(paste(base_path, "features.csv", sep = ""))
 
 ```{r events_stats, echo=FALSE}
 
+# Obtenemos el número total de registros
+n <- nrow(events)
+print(paste("El volumen de la muestra es", n))
+
+# Obtenemos los nombres de las columnas
+columnas <- names(events)
+print(columnas)
+
+# Obtenemos la tipología de las columnas
+str(events)
+
+# Exploramos la frecuencia de la IP origen en la columna srcip
+frecuencias <- table(events$srcip)
+print(frecuencias)
+
+# Evidenciamos que hay un gran volumen de peticiones del rango 59.166.0.0/24
+
+# Exploramos la frecuencia de la columna attack_cat
+frecuencias <- table(events$attack_cat)
+print(frecuencias)
+
+# Evidenciamos que la mayoría de ataques son de tipo exploit o genérico
 
 ```
 
@@ -47,6 +69,21 @@ features <- read.csv(paste(base_path, "features.csv", sep = ""))
 
 ```{r data_enrich, echo=FALSE}
 
+#Convertimos las dos columnas con datos de fecha y hora a tipo datetime
+events$Ltime <- as.POSIXct(events$Ltime, origin="1970-01-01")
+events$Stime <- as.POSIXct(events$Stime, origin="1970-01-01")
+
+# Pasamos la columna state a tipo factor
+events$state<- as.factor(events$state)
+
+# Pasamos la columna proto a tipo factor
+events$proto<- as.factor(events$proto)
+
+# Pasamos la columna service a tipo factor
+events$service<- as.factor(events$service)
+
+# Pasamos la columna attack_cat a tipo factor
+events$attack_cat<- as.factor(events$attack_cat)
 
 ```
 
