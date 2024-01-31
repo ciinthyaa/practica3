@@ -30,7 +30,7 @@ Se proporcionan los siguentes archivos:
 -   events.csv
 
 ```{r tidy_data, echo=FALSE}
-base_path <- "c:\\temp\\"
+base_path <- "C:/Users/cafa_/Documents/Ciberseguridad/5 DataDriven/PRACTICAS/AE3/AE3/"
 
 events <- read.csv(paste(base_path, "events_sample.csv", sep = ""))
 features <- read.csv(paste(base_path, "features.csv", sep = ""))
@@ -110,7 +110,7 @@ prop.table(table(events$Label))
 ### Create train and test data sets
 
 ```{r train_test, echo=FALSE}
-splitIndex <- createDataPartition(events[,outcomeName], p = .28, list = FALSE, times = 10)
+splitIndex <- createDataPartition(events[,outcomeName], p = .29, list = FALSE, times = 1)
 
 trainDF <- events[ splitIndex,]
 testDF  <- events[-splitIndex,]
@@ -165,6 +165,8 @@ plot(varImp(objModel, scale = F))
 ## Conclusiones
 
 ```{r conclusion, echo=FALSE}
+#Para obtener una mejor precisión de los datos se realizó algunas validaciones, y variaciones de datos y métodos.
+#Se varió el valor de p a 0,29, adicional también se cambió el método de entrenamiento a validación cruzada (cv) y se definió un número de pliegues de 10, y estas variaciones mejoraron el accuracy de 0.9837312 a 0.9901395, así mismo se obtuvo una mejora en el valor Kappa de 0.9277821 a 0.9551237
 
 
 ```
