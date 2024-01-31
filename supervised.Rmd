@@ -70,20 +70,20 @@ print(frecuencias)
 ```{r data_enrich, echo=FALSE}
 
 #Convertimos las dos columnas con datos de fecha y hora a tipo datetime
-events$Ltime <- as.POSIXct(events$Ltime, origin="1970-01-01")
-events$Stime <- as.POSIXct(events$Stime, origin="1970-01-01")
+#events$Ltime <- as.POSIXct(events$Ltime, origin="1970-01-01")
+#events$Stime <- as.POSIXct(events$Stime, origin="1970-01-01")
 
 # Pasamos la columna state a tipo factor
-events$state<- as.factor(events$state)
+#events$state<- as.factor(events$state)
 
 # Pasamos la columna proto a tipo factor
-events$proto<- as.factor(events$proto)
+#events$proto<- as.factor(events$proto)
 
 # Pasamos la columna service a tipo factor
-events$service<- as.factor(events$service)
+#events$service<- as.factor(events$service)
 
 # Pasamos la columna attack_cat a tipo factor
-events$attack_cat<- as.factor(events$attack_cat)
+#events$attack_cat<- as.factor(events$attack_cat)
 
 ```
 
@@ -110,7 +110,7 @@ prop.table(table(events$Label))
 ### Create train and test data sets
 
 ```{r train_test, echo=FALSE}
-splitIndex <- createDataPartition(events[,outcomeName], p = .25, list = FALSE, times = 1)
+splitIndex <- createDataPartition(events[,outcomeName], p = .28, list = FALSE, times = 10)
 
 trainDF <- events[ splitIndex,]
 testDF  <- events[-splitIndex,]
@@ -120,7 +120,8 @@ testDF  <- events[-splitIndex,]
 
 ```{r model_config, echo=FALSE}
 # Consulta https://es.wikipedia.org/wiki/Validaci%C3%B3n_cruzada
-objControl <- trainControl(method = 'none', 
+objControl <- trainControl(method = 'cv',  # Cambiamos a validación cruzada
+                           number = 10,    # Número de pliegues en la validación cruzada 
                            returnResamp = 'none', 
                            summaryFunction = twoClassSummary, 
                            classProbs = TRUE)
