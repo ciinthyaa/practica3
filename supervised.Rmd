@@ -110,7 +110,7 @@ prop.table(table(events$Label))
 ### Create train and test data sets
 
 ```{r train_test, echo=FALSE}
-splitIndex <- caret::createDataPartition(events[,outcomeName], p = .29, list = FALSE, times = 1)
+splitIndex <- caret::createDataPartition(events[,outcomeName], p = .28, list = FALSE, times = 7)
 
 trainDF <- events[ splitIndex,]
 testDF  <- events[-splitIndex,]
@@ -167,4 +167,4 @@ plot(caret::varImp(objModel, scale = F))
 
 Para obtener una mejor precisión de los datos se realizó algunas validaciones, y variaciones de datos y métodos.
 
-Se varió el valor de p a 0.29, adicional también se cambió el método de entrenamiento a validación cruzada (cv) y se definió un número de pliegues de 10, y estas variaciones mejoraron el accuracy de 0.9837312 a 0.9901395, así mismo se obtuvo una mejora en el valor Kappa de 0.9277821 a 0.9551237
+Se varió el valor de p a 0.28 con 7 particiones (se utilizan para dividir un conjunto de datos en conjuntos de entrenamiento y prueba), además también se cambió el método de entrenamiento a validación cruzada (cv) y se definió un número de pliegues de 10, y estas variaciones mejoraron el accuracy de 0.9837312 a 0.9930140, así mismo se obtuvo una mejora en el valor Kappa de 0.9277821 a 0.9672185
