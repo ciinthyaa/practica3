@@ -1,6 +1,6 @@
 ---
 title: "Supervised Learning"
-author: "Cinthya Figueroa, David vidal, Valeri Suárez"
+author: "Cinthya Figueroa, David Vidal, Valeri Suárez"
 date: "06/01/2024"
 output: html_document
 ---
