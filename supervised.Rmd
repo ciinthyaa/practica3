@@ -1,7 +1,7 @@
 ---
 title: "Supervised Learning"
 author: "Cinthya Figueroa, David Vidal, Valeri Suárez"
-date: "06/01/2024"
+date: "22/01/2024"
 output: html_document
 ---
 
@@ -164,7 +164,10 @@ plot(caret::varImp(objModel, scale = F))
 
 ## Conclusiones
 
+Para obtener una mejor precisión de los datos se realizaron algunas validaciones, y variaciones de datos y métodos. Se varió el valor de p a 0.28 con 9 particiones (se utilizan para dividir un conjunto de datos en conjuntos de entrenamiento y prueba), además también se cambió el método de entrenamiento a validación cruzada (cv) y se definió un número de pliegues de 10, y estas variaciones mejoraron el accuracy de 0.9837312 a 0.9944444, así mismo se obtuvo una mejora en el valor Kappa de 0.9277821 a 0.9746034.
 
-Para obtener una mejor precisión de los datos se realizó algunas validaciones, y variaciones de datos y métodos.
+Se realizó variaciones al valor de p a 0.28 con 10 particiones, pero estos cambios nos daban un valor de área bajo la curva (AUC-ROC) de 1 y aunque un 1 indica que el modelo tiene una precisión perfecta, generalmente se considera sospechoso y podría indicar la necesidad de más validación o revisión del modelo, es decir, el modelo podría estar capturando ruido en los datos de entrenamiento en lugar de las señales subyacentes, lo que podría llevar a un rendimiento deficiente en datos no vistos.
 
-Se varió el valor de p a 0.28 con 9 particiones (se utilizan para dividir un conjunto de datos en conjuntos de entrenamiento y prueba), además también se cambió el método de entrenamiento a validación cruzada (cv) y se definió un número de pliegues de 10, y estas variaciones mejoraron el accuracy de 0.9837312 a 0.9944444, así mismo se obtuvo una mejora en el valor Kappa de 0.9277821 a 0.9746034
+Por todo lo anterior descartamos este cambio para que el valor de área bajo la curva fuera inferior a 1 aunque bajara levemente el accuracy.
+
+Es importante recordar que un buen modelo de aprendizaje automático no solo se ajusta bien a los datos de entrenamiento, sino que también generaliza bien a los datos no vistos.
