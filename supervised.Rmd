@@ -30,7 +30,7 @@ Se proporcionan los siguentes archivos:
 -   events.csv
 
 ```{r tidy_data, echo=FALSE}
-base_path <- "c:\\temp\\"
+base_path <- "c:/Users/Valeri/Downloads/AE3/AE3/"
 
 events <- read.csv(paste(base_path, "events_sample.csv", sep = ""))
 features <- read.csv(paste(base_path, "features.csv", sep = ""))

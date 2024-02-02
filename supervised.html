@@ -9,9 +9,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content />
+<meta name="author" content="Cinthya Figueroa, David Vidal, Valeri Suárez" />
 
-<meta name="date" content="2024-06-01" />
 
 <title>Supervised Learning</title>
 
@@ -351,8 +350,8 @@ display: none;
 
 
 <h1 class="title toc-ignore">Supervised Learning</h1>
-<h4 class="author"><you_names_here></h4>
-<h4 class="date">06/01/2024</h4>
+<h4 class="author">Cinthya Figueroa, David Vidal, Valeri Suárez</h4>
+<h4 class="date">22/01/2024</h4>
 
 </div>
 
@@ -1123,14 +1122,28 @@ auc &lt;- pROC::roc(ifelse(testDF[,outcomeName] == &quot;ATTACK&quot;,1,0), pred
 </div>
 <div id="conclusiones" class="section level2">
 <h2>Conclusiones</h2>
-<p>Para obtener una mejor precisión de los datos se realizó algunas
-validaciones, y variaciones de datos y métodos.</p>
-<p>Se varió el valor de p a 0.28 con 9 particiones (se utilizan para
-dividir un conjunto de datos en conjuntos de entrenamiento y prueba),
-además también se cambió el método de entrenamiento a validación cruzada
-(cv) y se definió un número de pliegues de 10, y estas variaciones
-mejoraron el accuracy de 0.9837312 a 0.9944444, así mismo se obtuvo una
-mejora en el valor Kappa de 0.9277821 a 0.9746034</p>
+<p>Para obtener una mejor precisión de los datos se realizaron algunas
+validaciones, y variaciones de datos y métodos. Se varió el valor de p a
+0.28 con 9 particiones (se utilizan para dividir un conjunto de datos en
+conjuntos de entrenamiento y prueba), además también se cambió el método
+de entrenamiento a validación cruzada (cv) y se definió un número de
+pliegues de 10, y estas variaciones mejoraron el accuracy de 0.9837312 a
+0.9944444, así mismo se obtuvo una mejora en el valor Kappa de 0.9277821
+a 0.9746034.</p>
+<p>Se realizó variaciones al valor de p a 0.28 con 10 particiones, pero
+estos cambios nos daban un valor de área bajo la curva (AUC-ROC) de 1 y
+aunque un 1 indica que el modelo tiene una precisión perfecta,
+generalmente se considera sospechoso y podría indicar la necesidad de
+más validación o revisión del modelo, es decir, el modelo podría estar
+capturando ruido en los datos de entrenamiento en lugar de las señales
+subyacentes, lo que podría llevar a un rendimiento deficiente en datos
+no vistos.</p>
+<p>Por todo lo anterior descartamos este cambio para que el valor de
+área bajo la curva fuera inferior a 1 aunque bajara levemente el
+accuracy.</p>
+<p>Es importante recordar que un buen modelo de aprendizaje automático
+no solo se ajusta bien a los datos de entrenamiento, sino que también
+generaliza bien a los datos no vistos.</p>
 </div>
 </div>
 
