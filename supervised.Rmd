@@ -1,6 +1,6 @@
 ---
 title: "Supervised Learning"
-author: "<you_names_here>"
+author: "Cinthya Figueroa, David vidal, Valeri Suárez"
 date: "06/01/2024"
 output: html_document
 ---
